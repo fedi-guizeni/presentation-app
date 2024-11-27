@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import store from './store';
+import SlideShow from './components/SlideShow';
+import ControlView from './views/ControlView';
+import PresentView from './views/PresentView';
+import EditView from './views/EditView';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+    
+        <div>
+          <div className="navigation">
+            <Link to="/">Home</Link>
+            <Link to="/control">Control</Link>
+            <Link to="/present">Present</Link>
+            <Link to="/edit">Edit</Link>
+          </div>
+          
+          <Routes>
+            <Route path="/control" element={<ControlView />} />
+            <Route path="/present" element={<PresentView />} />
+            <Route path="/edit" element={<EditView />} />
+            <Route path="/" element={<SlideShow />} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 

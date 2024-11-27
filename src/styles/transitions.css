@@ -1,0 +1,24 @@
+.slide {
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide.visible {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide.hidden {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.slide.previous {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
